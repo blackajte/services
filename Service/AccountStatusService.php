@@ -2,7 +2,7 @@
 /**
  * This file is part of the Blackajte\ServicesBundle\Service\ package.
  *
- * (c) Blackajte
+ * (c) Arsenyk
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -14,7 +14,7 @@ use Blackajte\ServicesBundle\Service\Interfaces\AccountStatusServiceInterface;
 /**
  * AccountStatusService
  *
- * @author Blackajte <thibaut@owczarz.fr>
+ * @author Arsenyk <Arsenyk@owczarz.fr>
  */
 class AccountStatusService implements AccountStatusServiceInterface
 {
