@@ -15,7 +15,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Alias;
 
-final class BlackajteAdministrationExtension extends Extension
+final class BlackajteServicesExtension extends Extension
 {
      /**
      * {@inheritdoc}
