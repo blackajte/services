@@ -14,7 +14,9 @@ use Exception;
 use Blackajte\ServicesBundle\Service\RequestService;
 use Blackajte\ServicesBundle\Service\DefaultStatusService;
 use Blackajte\ServicesBundle\Service\AccountStatusService;
+use Blackajte\ServicesBundle\Service\LoggerService;
 use Symfony\Component\HttpFoundation\Request;
+use Psr\Log\NullLogger;
 
 class AllTest extends PHPUnit_Framework_TestCase
 {
@@ -90,6 +92,35 @@ class AllTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($data, $model->getRequestData($request));
     }
 
+    public function testRequestJsonData()
+    {
+        $model = new RequestService();
+        $request = new Request();
+        $userType = "User Type";
+        $search = "Search data";
+        $date = "2020-02-24";
+        $sort = "tititata";
+        $sortType = "DESC";
+        $from = 10;
+        $size = 100;
+        $query = "search request";
+        $request->request->set('user_type', $userType);
+
+        $newUserType = "New User Type";
+        $data = array(
+            'user_type' => $newUserType,
+            'search' => $search,
+            'date' => $date,
+            'sort' => $sort,
+            'sortType' => $sortType,
+            'from' => $from,
+            'size' => $size,
+            'q' => $query
+        );
+        $request->request->set('data', json_encode($data));
+        $this->assertEquals($data, $model->getRequestData($request));
+    }
+
     public function testDefaultStatusService()
     {
         $model = new DefaultStatusService();
@@ -144,5 +175,39 @@ class AllTest extends PHPUnit_Framework_TestCase
         $model = new AccountStatusService($data);
         
         $this->assertEquals($data, $model->getAvailableStatus());
+    }
+
+    public function testLoggerService()
+    {
+        $logger = new NullLogger();
+        $loggerService = new LoggerService($logger, 'test');
+
+        $this->assertEquals($logger, $loggerService->getLogger());
+
+        $message = "test message";
+        $type = 'error';
+        $context = [];
+        $this->assertEquals(
+            $loggerService,
+            $loggerService->log($message, $type, $context)
+        );
+    }
+    
+    public function testTypeMedia()
+    {
+        $media = $this->getMedia();
+        $this->assertNull($media->getType());
+
+        $randstring = substr(md5(rand()), 0, 7);
+
+        $media->setType($randstring);
+        $this->assertEquals($randstring, $media->getType());
+    }
+    /**
+     * @return Media
+     */
+    protected function getMedia()
+    {
+        return $this->getMockForAbstractClass('Blackajte\ServicesBundle\Medias\Entity\Media');
     }
 }

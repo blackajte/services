@@ -1,15 +1,15 @@
 <?php
 /*
- * This file is part of the Arsenyk\Bundle\LogInfo\ package.
+ * This file is part of the Blackajte\ServicesBundle\LogInfo\ package.
  *
  * (c) Arsenyk 
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Arsenyk\Bundle\LogInfo\Model;
+namespace Blackajte\ServicesBundle\LogInfo\Model;
 
-use Arsenyk\Bundle\LogInfo\Model\Interfaces\LogInfoInterface;
+use Blackajte\ServicesBundle\LogInfo\Model\Interfaces\LogInfoInterface;
 use Arsenyk\Component\Model\Ipable\GeoIpableInterface;
 use Arsenyk\Component\Model\Ipable\InfoDeviceableInterface;
 

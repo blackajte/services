@@ -1,15 +1,15 @@
 <?php
 /*
- * This file is part of the Arsenyk\Bundle\Medias\ package.
+ * This file is part of the Blackajte\ServicesBundle\Medias\ package.
  *
  * (c) Arsenyk 
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Arsenyk\Bundle\Medias\Model;
+namespace Blackajte\ServicesBundle\Medias\Model;
 
-use Arsenyk\Bundle\Medias\Model\Interfaces\MediaInterface;
+use Blackajte\ServicesBundle\Medias\Model\Interfaces\MediaInterface;
 
 /**
  * Media

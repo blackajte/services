@@ -10,7 +10,7 @@
 namespace Blackajte\ServicesBundle\Service;
 
 use Blackajte\ServicesBundle\Service\Interfaces\LoggerServiceInterface;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 /**
  * LoggerService
@@ -20,35 +20,38 @@ use Monolog\Logger;
 class LoggerService implements LoggerServiceInterface
 {
     /**
-     * @var Logger
+     * @var LoggerInterface
      */
     protected $logger;
 
     /**
-     * @param Logger $logger
+     * @param LoggerInterface $logger
      */
-    public function __construct(Logger $logger, $name)
+    public function __construct(LoggerInterface $logger, $name)
     {
         $this->setLogger($logger, $name);
-    }
-
-    protected function log($message, $type)
-    {
-        $logger = $this->getLogger();
-        if ($logger) {
-            $logger->{$type}(
-                $message[0],
-                $message[1]
-            );
-        }
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setLogger(Logger $logger, $name)
+    public function log($message, $type, $context = [])
     {
-        $logger = $logger->withName($name);
+        $logger = $this->getLogger();
+        if ($logger) {
+            $logger->{$type}(
+                $message,
+                $context
+            );
+        }
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLogger(LoggerInterface $logger)
+    {
         $this->logger = $logger;
         return $this;
     }

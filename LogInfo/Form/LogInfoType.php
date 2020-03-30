@@ -1,13 +1,13 @@
 <?php
 /*
- * This file is part of the Arsenyk\Bundle\LocaleLogInfo\ package.
+ * This file is part of the Blackajte\ServicesBundle\LocaleLogInfo\ package.
  *
  * (c) Arsenyk
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Arsenyk\Bundle\LogInfo\Form;
+namespace Blackajte\ServicesBundle\LogInfo\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,7 +36,7 @@ class LogInfoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Arsenyk\Bundle\LogInfo\Model\LogInfo',
+            'data_class' => 'Blackajte\ServicesBundle\LogInfo\Model\LogInfo',
             'csrf_protection' => false,
         ]);
     }

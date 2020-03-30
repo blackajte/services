@@ -7,7 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Blackajte\ServicesBundle\Service;
+namespace Blackajte\ServicesBundle\Service\Interfaces;
 
 use Psr\Log\LoggerInterface;
 
@@ -22,10 +22,9 @@ interface LoggerServiceInterface
      * Set Logger
      *
      * @param LoggerInterface $logger
-     * @param string $name
      * @return self
      */
-    public function setLogger(LoggerInterface $logger, $name);
+    public function setLogger(LoggerInterface $logger);
 
     /**
      * Get Logger
@@ -33,4 +32,14 @@ interface LoggerServiceInterface
      * @return LoggerInterface
      */
     public function getLogger();
+    
+    /**
+     * Log a message
+     *
+     * @param string $message
+     * @param string $type
+     * @param array $context
+     * @return self
+     */
+    public function log($message, $type, $context = []);
 }
