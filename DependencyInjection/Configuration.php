@@ -17,14 +17,14 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('blackajte_services');
+        $treeBuilder = new TreeBuilder('v3_services');
+        $rootNode = $treeBuilder->getRootNode();
 
-        $this->addDefaultSection($node);
-        $this->addStatusSection($node);
-        $this->addDeviseSection($node);
-        $this->addVipsSection($node);
-        $this->addSiteSection($node);
+        $this->addDefaultSection($rootNode);
+        $this->addStatusSection($rootNode);
+        $this->addDeviseSection($rootNode);
+        $this->addVipsSection($rootNode);
+        $this->addSiteSection($rootNode);
 
         return $treeBuilder;
     }

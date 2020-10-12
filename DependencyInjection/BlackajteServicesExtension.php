@@ -22,32 +22,13 @@ final class BlackajteServicesExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration();
+        $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yaml');
+        $loader->load('services.yml');
 
-        $container->setAlias(
-            'Blackajte\ServicesBundle\Service\RequestService',
-            new Alias('blackajte_services.service.request', true)
-        );
-        $container->getDefinition('blackajte_services.service.request')
-            ->replaceArgument(0, $config['default']['pagination']);
-
-
-        $container->setAlias(
-            'Blackajte\ServicesBundle\Service\DefaultStatusServiceInterface',
-            new Alias('blackajte_services.service.defaultStatus', true)
-        );
-        $container->getDefinition('blackajte_services.service.defaultStatus')
-            ->replaceArgument(0, $config['status']['DEFAULT']);
-
-
-        $container->setAlias(
-            'Blackajte\ServicesBundle\Service\AccountStatusServiceInterface',
-            new Alias('blackajte_services.service.accountStatus', true)
-        );
-        $container->getDefinition('blackajte_services.service.accountStatus')
-            ->replaceArgument(0, $config['status']['ACCOUNT']);
+        $container->getDefinition('blackajte_services.service.request')->replaceArgument(0, $config['default']['pagination']);
+        $container->getDefinition('blackajte_services.service.default_status')->replaceArgument(0, $config['status']['DEFAULT']);
+        $container->getDefinition('blackajte_services.service.account_status')->replaceArgument(0, $config['status']['ACCOUNT']);
     }
 }

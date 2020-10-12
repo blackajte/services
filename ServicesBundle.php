@@ -11,6 +11,7 @@ namespace Blackajte\ServicesBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Blackajte\ServicesBundle\DependencyInjection\BlackajteServicesExtension;
 
 final class ServicesBundle extends Bundle
 {
@@ -19,5 +20,11 @@ final class ServicesBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
+        parent::build($container);
+    }
+
+    public function getContainerExtension()
+    {
+        return new BlackajteServicesExtension();
     }
 }

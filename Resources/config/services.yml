@@ -1,0 +1,18 @@
+services:
+    blackajte_services.service.request:
+        class: Blackajte\ServicesBundle\Service\RequestService
+        arguments:
+            - 50
+        public: true
+
+    blackajte_services.service.default_status:
+        class: Blackajte\ServicesBundle\Service\DefaultStatusService
+        public: true
+        arguments:
+            - []
+
+    blackajte_services.service.account_status:
+        class: Blackajte\ServicesBundle\Service\AccountStatusService
+        public: true
+        arguments:
+            - []
