@@ -9,11 +9,11 @@ Bundle comprenant tous les Services basiques dont nous pourrions avoir besoin
     "repositories": [
         {
             "type": "git",
-            "url": "blackajte@bitbucket.org:blackajte/V3-services.git"
+            "url": "blackajte@bitbucket.org:blackajte/services.git"
         }
     ],
     ............
-        "blackajte/V3-services": "^1.*"
+        "blackajte/services": "^1.*"
 ```
 
 
